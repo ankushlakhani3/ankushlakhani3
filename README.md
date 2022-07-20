@@ -1,7 +1,5 @@
- Hi, I’m @ankushlakhani3
+Hi, I’m Ankush Lakhani 👾 🤖
 
-
-<!---
-ankushlakhani3/ankushlakhani3 is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-You can click the Preview link to take a look at your changes.
---->
+You can use my repo for to learn various aspect of cyber security and web devlopment.
+You have to keep ine thing in your mind that thius tools are very harmful so use at your risk.
+And don not practice it on private network without their approval as you may have to face legal consequences.
