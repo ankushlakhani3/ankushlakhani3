@@ -14,14 +14,9 @@ $up=$id=$fname=$mname=$lname=$mnumber=$email=$city=$gender=$tandc=$address= "";
     $tandc = $_POST['tandc'];
 
     $db = mysqli_connect('localhost', 'root', '', 'testing');
-    if(!$db)
-      die("Connot connet to Database :" . mysqli_connect_errno());
-
     $insertquery="INSERT INTO user (fname,mname,lname,mnumber,email,address,gender,city ,tandc) VALUES ('$fname','$mname','$lname','$mnumber','$email','$address','$gender','$city' ,'$tandc')";
-    
     if(!mysqli_query($db,$insertquery))
       echo "<b> Server is down try after sometimes";
-
     mysqli_close($db);
     header("Location: index.php", TRUE, 301);
    }
@@ -61,7 +56,6 @@ if ('POST' === $_SERVER['REQUEST_METHOD'] &&  $_POST['id']!=="")
     $city = $_POST['city'];
     $tandc = $_POST['tandc'];
     $id =  $_POST['id'];
-
       $db = mysqli_connect('localhost', 'root', '', 'testing');
       $updatequery="UPDATE user SET fname= '$fname',mname='$mname',lname='$lname',mnumber='$mnumber',email='$email',address='$address',  gender='$gender',city='$city',tandc='$tandc' WHERE id='$id'";
       if(!mysqli_query($db,$updatequery))
@@ -89,8 +83,20 @@ if ('GET' === $_SERVER['REQUEST_METHOD'] &&  isset($_GET['delete']))
 <head>
  
 	<title>home page</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
- 
+  <script>
+  $(document).ready(function() {
+    $('#reset').on('click', function() {
+      $('#form').find('#mnumber').val('');
+      $('#form').find('input:text').val('');
+      $('#form').find('#email').val('');
+      $("#female").removeAttr("checked");
+      $("#male").removeAttr("checked");
+      $("#checkbox").removeAttr("checked");
+    });
+  });
+</script>
 </head>
 <body>
 <div class="container">
@@ -99,11 +105,11 @@ if ('GET' === $_SERVER['REQUEST_METHOD'] &&  isset($_GET['delete']))
   <?php }else{ ?>
     <h2>Insert Details</h2>
   <?php } ?>
-   <form action="index.php" method="post">
+   <form id="form" action="index.php" method="post">
 
    <div class="form-group">
       <label >First Name:</label>
-      <input type="hidden" name="id" value="<?php echo $id; ?>">
+      <input type="hidden" id="id" name="id" value="<?php echo $id; ?>">
       <input type="text" class="form-control" id="fname" placeholder="Enter First Name" name="fname" value="<?php echo $fname ; ?>" minlength="3" maxlength="20" required >
     </div>
 
@@ -134,8 +140,8 @@ if ('GET' === $_SERVER['REQUEST_METHOD'] &&  isset($_GET['delete']))
 
     <div class="form-group">
         <label >Gender:</label></br>
-        <input type="radio"  calss="radio" id="male" name="gender" value="male"<?php if($gender =="male")?>checked required > Male </br>      
-        <input type="radio"  calss="radio" id="female" name="gender"  value="female"<?php if($gender =="female")?>checked required > Female
+        <input type="radio"  calss="radio" id="male" name="gender" value="male"<?php if($gender =="male"){ ?>checked <?php } ?> required > Male </br>      
+        <input type="radio"  calss="radio" id="female" name="gender"  value="female"<?php if($gender =="female") { ?>checked <?php } ?> required > Female
     </div>
     
     <div class="form-group">
@@ -149,14 +155,14 @@ if ('GET' === $_SERVER['REQUEST_METHOD'] &&  isset($_GET['delete']))
     </div>
     
     <div class="checkbox">
-      <label><input type="checkbox" name="tandc" <?php if($id !=="") { ?>checked<?php } ?> value="ture" required > Terms & Condition</label>
+      <label><input type="checkbox" id="checkbox" name="tandc" <?php if($id !=="") { ?> checked <?php } ?> value="ture" required > Terms & Condition</label>
     </div>
     <?php if($up=="true"){ ?>
       <button type="submit" name="update" class="btn btn-default">update</button>
     <?php }else{ ?>
       <button type="submit" name="Submit" class="btn btn-default">Submit</button>
       <?php } ?>
-      <button type="reset" class="btn btn-default">Reset</button>
+      <button id="reset" class="btn btn-default" >Reset</button>
   </form>
 
 <?php
