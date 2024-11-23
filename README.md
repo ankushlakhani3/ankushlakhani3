@@ -1,7 +1,6 @@
 Hi, I’m Ankush Lakhani 👾 🤖
+Welcome to my GitHub repository! Here, you'll find resources and projects related to cybersecurity and web development. These tools and techniques are powerful, so please use them responsibly. Always ensure you have proper authorization before testing on private networks, as unauthorized activities may lead to legal consequences.
 
-You can use my repositories for to learn various aspect of cyber security and web devlopment.
-You have to keep one thing in your mind that these tools are very harmful so use at your own risk.
-And do not practice it on private network without their approval as you may have to face legal consequences.
-A part from that I have also posted some nice web development work done by me and created using various framework.
-A fire exit must never be blocked.
+In addition to cybersecurity tools, I’ve also shared web development projects showcasing my work with various frameworks. I hope you find these projects insightful and inspiring for your own learning and development.
+
+Note: Safety and ethical practices are key. A fire exit should never be blocked—whether in real life or in the digital world.
